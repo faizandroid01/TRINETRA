@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.master.faiz.trinetra.SignUpActivity">
+
+    <include layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview1"
+            android:text="NAME"
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:hint="Name"
+            android:id="@+id/activity_sign_up_user_name"
+            android:layout_toRightOf="@+id/textview1"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview2"
+            android:text="EMAIL ID"
+            android:layout_below="@+id/textview1"
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:hint="Email"
+            android:layout_below="@+id/activity_sign_up_user_name"
+            android:id="@+id/activity_sign_up_email"
+            android:layout_toRightOf="@+id/textview1"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview3"
+            android:text="PASSWORD"
+            android:layout_below="@+id/textview2"
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:hint="Password"
+            android:layout_below="@+id/activity_sign_up_email"
+            android:id="@+id/activity_sign_up_password"
+            android:layout_toRightOf="@+id/textview1"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview4"
+            android:text="AADHAR ID"
+            android:layout_below="@+id/textview3"
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            />
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:hint="Aadhar Id"
+            android:layout_below="@+id/activity_sign_up_password"
+            android:id="@+id/activity_sign_up_aadhar_id"
+            android:layout_toRightOf="@+id/textview1"
+            android:layout_marginTop="20dp"/>
+
+
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:id="@+id/textview5"
+            android:text="USER TYPE"
+            android:layout_below="@+id/textview4"
+            android:padding="5dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/textview5"
+            android:layout_below="@+id/activity_sign_up_aadhar_id"
+            android:id="@+id/user_signup_type_spinner"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SIGN UP"
+            android:id="@+id/sign_up_activity_signup_button"
+            android:layout_below="@+id/user_signup_type_spinner"
+            android:layout_marginTop="110dp"
+            android:layout_centerHorizontal="true"
+            android:onClick="userSignUp"/>
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

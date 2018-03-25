@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.master.faiz.trinetra.Contractor.ContractorLogin">
+
+
+
+    <include layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:text="@string/welcome"
+            android:textSize="25sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/activity_contractor_login_contractor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/welcome"
+            android:layout_toRightOf="@+id/welcome"
+            android:hint="Contractor Name"
+            android:padding="5dp"
+            android:textColor="@color/initial_name_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_contractor_login_contractor_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:onClick="contractorAddWorker"
+            android:id="@+id/activity_contractor_login_add_worker_button"
+            android:text="ADD WORKER"
+            />
+
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_contractor_login_add_worker_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:onClick="contractorViewWorker"
+
+            android:id="@+id/activity_contractor_login_view_worker_button"
+            android:text="VIEW WORKER"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROJECT LIST"
+            android:id="@+id/textview1"
+            android:layout_below="@+id/activity_contractor_login_view_worker_button"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="25dp"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/contractor_projects_listview"
+            android:layout_below="@+id/textview1"
+            android:layout_margin="10dp"
+            android:background="@color/listview_background"
+
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

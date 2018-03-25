@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.master.faiz.trinetra.Admin.AdminProject">
+
+    <include layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textSize="25sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/activity_admin_project_admin_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/welcome"
+            android:layout_toRightOf="@+id/welcome"
+            android:hint="Admin Name"
+            android:padding="5dp"
+            android:textColor="@color/initial_name_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <ListView android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:id="@+id/admin_project_listview"
+            android:layout_below="@+id/welcome"
+            android:background="@color/listview_background"
+            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
+
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_input_add"
+            android:id="@+id/activity_admin_project_add_button"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:onClick="adminAddProject"
+            />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

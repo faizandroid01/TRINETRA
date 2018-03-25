@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="com.master.faiz.trinetra.Admin.AdminViewProjectReport">
+
+
+    <include layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+         <TextView
+             android:layout_width="180dp"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="20dp"
+             android:id="@+id/textview1"
+             android:padding="5dp"
+             android:textSize="15sp"
+             android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+             android:text="No. of Workers Present"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/listview_background"
+            android:padding="5dp"
+            android:layout_marginEnd="@dimen/textview_margin_end"
+            android:id="@+id/activity_admin_view_project_report_worker_present"
+            android:layout_toRightOf="@+id/textview1"
+            android:layout_toEndOf="@+id/textview1"
+            android:layout_marginTop="20dp"
+            android:text="VAL"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/textview2"
+            android:layout_below="@+id/textview1"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:text="No. of Authentications"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/listview_background"
+            android:padding="5dp"
+            android:layout_marginEnd="@dimen/textview_margin_end"
+            android:layout_below="@+id/activity_admin_view_project_report_worker_present"
+            android:id="@+id/activity_admin_view_project_report_authentication_generated"
+            android:layout_toRightOf="@+id/textview1"
+            android:layout_marginTop="20dp"
+            android:text="VAL"/>
+
+        <TextView
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/textview3"
+            android:layout_below="@+id/textview2"
+            android:padding="5dp"
+            android:textSize="15sp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:text=" Successfull Authentication"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/listview_background"
+            android:padding="5dp"
+            android:layout_marginEnd="@dimen/textview_margin_end"
+            android:layout_below="@+id/activity_admin_view_project_report_authentication_generated"
+            android:id="@+id/activity_admin_view_project_report_successfull_authentication"
+            android:layout_toRightOf="@+id/textview1"
+            android:layout_marginTop="20dp"
+            android:text="VAL"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/textview4"
+            android:layout_below="@+id/textview3"
+            android:textStyle="bold|italic"
+            android:textColor="@color/initial_name_color"
+            android:padding="5dp"
+            android:textSize="25sp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:text=" Overall Record"/>
+
+        <TextView
+            android:id="@+id/activity_admin_view_project_report_overall_record"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/textview4"
+            android:layout_centerHorizontal="true"
+            android:textSize="45sp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:layout_marginTop="123dp"
+            android:background="#d1cccc"
+            android:text="VAL" />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

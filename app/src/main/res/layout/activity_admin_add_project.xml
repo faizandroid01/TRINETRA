@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.master.faiz.trinetra.Admin.AdminAddProject">
+
+    <include layout="@layout/app_bar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:id="@+id/textview1"
+            android:text="Project Name :"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:id="@+id/activity_admin_add_project_project_name"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+
+            />
+
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@+id/textview1"
+            android:id="@+id/textview2"
+            android:text="Project Id :"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+        <TextView
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@color/listview_background"
+            android:layout_below="@+id/activity_admin_add_project_project_name"
+            android:id="@+id/activity_admin_add_project_project_id"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+
+            />
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:layout_below="@+id/textview2"
+            android:id="@+id/textview3"
+            android:text="Project Start Date :"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@+id/activity_admin_add_project_project_id"
+            android:id="@+id/activity_admin_add_project_project_start_date"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+
+            />
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:layout_below="@+id/textview3"
+            android:id="@+id/textview4"
+            android:text="Project End Date :"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            />
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@+id/activity_admin_add_project_project_start_date"
+            android:id="@+id/activity_admin_add_project_project_end_date"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+
+            />
+        <TextView
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:layout_below="@+id/textview4"
+            android:id="@+id/textview5"
+            android:text="Project Location :"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            />
+        <EditText
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_below="@+id/activity_admin_add_project_project_end_date"
+            android:id="@+id/activity_admin_add_project_project_location"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="20dp"
+
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_admin_add_project_save_project_button"
+            android:text="OK"
+            android:onClick="saveProjectDetails"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/activity_admin_add_project_project_location"
+            android:layout_marginBottom="24dp" />
+
+
+    </RelativeLayout>
+</LinearLayout>

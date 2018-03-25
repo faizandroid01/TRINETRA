@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.master.faiz.trinetra.Supervisor.SupervisorShiftAssignment">
+
+    <include layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="25dp"
+            android:hint="SHIFT"
+            android:textSize="20dp" />
+
+
+        <Spinner
+            android:id="@+id/activity_supervisor_shift_assignment_shift_spinner"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textview1"
+            android:layout_toStartOf="@+id/activity_supervisor_shift_assignment_ok_button" />
+
+
+        <LinearLayout
+            android:id="@+id/inner_checkbox_layout"
+            android:layout_width="match_parent"
+            android:layout_height="490dp"
+            android:layout_below="@+id/textview1"
+            android:layout_margin="10dp"
+            android:background="@color/linear_layout_background"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TextView" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="checkBoxCreation"
+                android:text="Button" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/activity_supervisor_shift_assignment_ok_button"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignEnd="@+id/inner_checkbox_layout"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/login_button_background"
+            android:onClick="startRandomFunction"
+            android:text="OK"
+            android:textColor="#fff" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
+

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.master.faiz.trinetra.Admin.AdminViewContractorDetails">
+
+    <include layout="@layout/app_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+          
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:id="@+id/textview8"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:text="Contractor Name :"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/textview8"
+
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:id="@+id/activity_admin_view_contractor_details_contractor_name"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:hint="C Name"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/textview8"
+            android:id="@+id/textview10"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:text="Manpower Details :"/>
+
+
+
+
+        <TextView
+            android:id="@+id/textview1"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textview10"
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:text="No of Skilled Workers :"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+
+        <TextView
+            android:id="@+id/activity_admin_view_contractor_details_number_of_skilled_workers"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/textview10"
+
+            android:layout_toRightOf="@+id/textview1"
+            android:hint=" skilled no "
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_below="@+id/textview1"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:text="No of Semi skilled"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+        <TextView
+            android:id="@+id/activity_admin_view_contractor_details_number_of_semiskilled_workers"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/activity_admin_view_contractor_details_number_of_skilled_workers"
+            android:layout_marginEnd="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/textview2"
+            android:hint="no of semi skilled "
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_below="@+id/textview2"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:text="No of permanent emp :"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+        <TextView
+            android:id="@+id/activity_admin_view_contractor_details_number_of_permanent_workers"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/activity_admin_view_contractor_details_number_of_semiskilled_workers"
+            android:layout_marginEnd="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/textview2"
+            android:hint="permanent emp "
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+
+        <TextView
+            android:id="@+id/textview4"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_below="@+id/textview3"
+            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:text=" No of temporary employee :"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+        <TextView
+            android:id="@+id/activity_admin_view_contractor_details_number_of_temporary_workers"
+            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
+            android:layout_height="@dimen/acitivity_admin_view_package_textviews_height"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/activity_admin_view_contractor_details_number_of_permanent_workers"
+            android:layout_marginEnd="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:layout_marginTop="20dp"
+            android:layout_toRightOf="@+id/textview2"
+            android:hint="temporary emp"
+            android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
+
+            />
+
+
+
+
+<Button
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/activity_admin_view_contractor_details_schedule_attendance"
+    android:text="SCHEDULE ATTENDANCE"
+    android:background="@drawable/curve_button_background"
+    android:layout_below="@+id/activity_admin_view_contractor_details_number_of_temporary_workers"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="100dp"
+    android:onClick="scheduleAttendance"
+
+    />
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+</LinearLayout>

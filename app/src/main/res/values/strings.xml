@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TRINETRA</string>
+    <string name="admin_projects">PROJECTS</string>
+    <string name="welcome">Welcome -</string>
+    <string name="package_list">Package List</string>
+    <string name="contractor_list">Contractors List</string>
+
+
 </resources>

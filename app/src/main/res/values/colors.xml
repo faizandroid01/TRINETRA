@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#ed2e55</color>
+    <color name="colorPrimaryDark">#66020f</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="appbar_background">#96c20000</color>
+    <color name="login_button_background">#c20000</color>
+    <color name="button_stroke_color">#66020f</color>
+    <color name="login_button_text_color">#ffffff</color>
+    <color name="textview_background_color">#f1af5369</color>
+    <color name="initial_name_color">#000000</color>
+    <color name="normal_curve_bg">#bda7a705</color>
+    <color name="listview_background">#c4c3c9</color>
+    <color name="datepicker_background">#ece6e6</color>
+    <color name="linear_layout_background">#efebeb</color>
+
 </resources>

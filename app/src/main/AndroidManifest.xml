@@ -16,6 +16,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Admin.AdminProject" />
+        <activity android:name=".Admin.AdminPackages" />
+        <activity android:name=".Admin.AdminViewPackage" />
+        <activity android:name=".Admin.AdminViewContractors" />
+        <activity android:name=".Admin.AdminViewContractorDetails" />
+        <activity android:name=".Admin.AdminScheduleAttendance" />
+        <activity android:name=".Admin.AdminProjectReport" />
+        <activity android:name=".Admin.AdminViewProjectReport" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".Admin.AdminAddProject" />
+        <activity android:name=".Admin.AdminAddPackage" />
+        <activity android:name=".Admin.AdminAddContractor" />
+        <activity android:name=".Supervisor.SupervisorLogin" />
+        <activity android:name=".Supervisor.SupervisorPackageDetails" />
+        <activity android:name=".Supervisor.SupervisorShiftAssignment" />
+        <activity android:name=".Contractor.ContractorLogin" />
+        <activity android:name=".Contractor.ContractorViewPackage" />
+        <activity android:name=".Contractor.ContractorAddWorker" />
+        <activity android:name=".Contractor.ContractorViewWorker" />
+        <activity android:name=".Contractor.ContractorAssignWorker" />
+        <activity android:name=".Contractor.ContractorAssignPackageWorker" />
+        <activity android:name=".Contractor.ContractorViewPackageWorker"></activity>
     </application>
 
 </manifest>
