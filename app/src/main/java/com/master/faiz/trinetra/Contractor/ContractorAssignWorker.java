@@ -25,6 +25,7 @@ public class ContractorAssignWorker extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle(contractor_package_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
 
 
@@ -44,5 +45,11 @@ public class ContractorAssignWorker extends AppCompatActivity {
         i.putExtra("contractor_package_name",contractor_package_name);
         startActivity(i);
 
+    }
+
+    public void contractorAssignSupervisor(View view) {
+        Intent i = new Intent(ContractorAssignWorker.this, ContractorAssignSupervisor.class);
+        i.putExtra("contractor_package_name", contractor_package_name);
+        startActivity(i);
     }
 }

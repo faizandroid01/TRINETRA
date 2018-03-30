@@ -28,6 +28,7 @@ public class ContractorViewWorker extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle("WORKER LIST");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
         final String items[] = {"W1", "W2", "W3", "W4"};
         contractor_worker_listView = (ListView) findViewById(R.id.contractor_worker_listview);

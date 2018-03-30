@@ -24,6 +24,8 @@ public class AdminViewContractors extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle("CONTRACTORS");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
+
 
 
         final String[] items = {"C 1", "C 2", "C 3", "C 4"};

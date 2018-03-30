@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -29,6 +28,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_right"
             android:padding="5dp"
             android:textSize="15sp"
             android:hint="Name"
@@ -54,6 +54,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textSize="15sp"
+            android:layout_marginRight="@dimen/margin_right"
+
             android:hint="Email"
             android:layout_below="@+id/activity_sign_up_user_name"
             android:id="@+id/activity_sign_up_email"
@@ -79,6 +81,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textSize="15sp"
+            android:layout_marginRight="@dimen/margin_right"
+
             android:hint="Password"
             android:layout_below="@+id/activity_sign_up_email"
             android:id="@+id/activity_sign_up_password"
@@ -104,6 +108,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textSize="15sp"
+            android:layout_marginRight="@dimen/margin_right"
+
             android:hint="Aadhar Id"
             android:layout_below="@+id/activity_sign_up_password"
             android:id="@+id/activity_sign_up_aadhar_id"
@@ -116,13 +122,12 @@
             android:layout_height="wrap_content"
             android:id="@+id/textview5"
             android:text="USER TYPE"
-            android:layout_below="@+id/textview4"
             android:padding="5dp"
             android:textColor="@color/colorPrimary"
             android:textSize="15sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
-            />
+            android:layout_marginTop="17dp"
+            android:layout_alignTop="@+id/user_signup_type_spinner"
+            android:layout_alignStart="@+id/textview4" />
 
         <Spinner
             android:layout_width="match_parent"
@@ -130,6 +135,8 @@
             android:padding="14dp"
             android:layout_marginTop="20dp"
             android:layout_toRightOf="@+id/textview5"
+            android:layout_marginRight="@dimen/margin_right"
+
             android:layout_below="@+id/activity_sign_up_aadhar_id"
             android:id="@+id/user_signup_type_spinner"
             />

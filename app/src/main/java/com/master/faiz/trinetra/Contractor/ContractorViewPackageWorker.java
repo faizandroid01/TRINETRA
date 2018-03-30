@@ -32,6 +32,7 @@ public class ContractorViewPackageWorker extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle(contractor_package_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
         final String items[] = {"pkwrkr 1 ", "pkwrkr 2", "pkwrkr 3", "pkwrkr 4"};
         package_worker = (ListView) findViewById(R.id.contractor_package_worker_listview);

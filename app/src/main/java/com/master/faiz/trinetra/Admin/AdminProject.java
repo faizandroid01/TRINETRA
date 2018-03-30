@@ -10,9 +10,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.master.faiz.trinetra.R;
+
+import Utils.DataWrapper;
+import Utils.VolleySingleton;
 
 public class AdminProject extends AppCompatActivity {
 
@@ -20,6 +28,8 @@ public class AdminProject extends AppCompatActivity {
     ListView project_listView;
     ArrayAdapter<String> adapter;
     String admin_project_name;
+    TextView adminName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +37,32 @@ public class AdminProject extends AppCompatActivity {
         setContentView(R.layout.activity_admin_project);
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle(R.string.admin_projects);
+        adminName = (TextView) findViewById(R.id.activity_admin_project_admin_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
+
+
+        //@GET Method --  fetch the adminName and his projects corresponding to project id  .
+        StringRequest request = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                //@Parse and assign to var-@adminName
+                // parse adminProjects  and store it in Arraylist
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+        });
+
+
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
+
+
+        //@Assign After getting the projects list in response,, Assign it to the items array below to display it in listview
 
         final String[] items = {"P1", "P2", "P3", "P4"};
         project_listView = (ListView) findViewById(R.id.admin_project_listview);

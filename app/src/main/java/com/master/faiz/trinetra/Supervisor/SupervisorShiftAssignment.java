@@ -1,11 +1,10 @@
 package com.master.faiz.trinetra.Supervisor;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -33,6 +32,7 @@ public class SupervisorShiftAssignment extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle(package_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
         number = (TextView)findViewById(R.id.textview2);
      /*

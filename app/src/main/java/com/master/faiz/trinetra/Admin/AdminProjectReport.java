@@ -10,7 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.master.faiz.trinetra.R;
+
+import Utils.DataWrapper;
+import Utils.VolleySingleton;
 
 public class AdminProjectReport extends AppCompatActivity {
     Toolbar toolbar;
@@ -27,8 +34,32 @@ public class AdminProjectReport extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle("Authentication");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
-       final String items[] = {"C1", "C2", "C3", "C4"};
+
+        //@GET Method --  fetch the contractorList within admin  .
+        StringRequest request = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                // parse contractor List  and store it in Arraylist
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+
+            }
+        });
+
+
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
+
+        //@Assign After getting the projects list in response,, Assign it to the items array below to display it in listview
+
+        final String items[] = {"C1", "C2", "C3", "C4"};
         contractor_list = (ListView) findViewById(R.id.activity_admin_project_report_contractor_list_view);
 
         ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, items);

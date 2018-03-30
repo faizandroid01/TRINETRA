@@ -27,6 +27,7 @@
             android:id="@+id/activity_admin_add_package_package_name"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
+            android:inputType="text"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="25dp"
@@ -34,37 +35,15 @@
 
             />
 
-        <TextView
-            android:id="@+id/textview2"
-            android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textview1"
-            android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
-            android:layout_marginTop="25dp"
-            android:padding="5dp"
-            android:text="Package Id :"
-            android:textSize="17sp"
-            android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/activity_admin_add_package_package_id"
-            android:layout_width="215dp"
-            android:background="@color/listview_background"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/activity_admin_add_package_package_name"
-            android:layout_marginEnd="20dp"
-            android:layout_marginTop="25dp"
-            android:padding="5dp"
-
-            />
 
         <TextView
             android:id="@+id/textview3"
             android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/textview2"
+            android:layout_below="@+id/textview1"
             android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
+            android:inputType="date"
             android:layout_marginTop="25dp"
             android:padding="6dp"
             android:text="Package Start Date :"
@@ -75,8 +54,9 @@
             android:id="@+id/activity_admin_add_package_package_start_date"
             android:layout_width="215dp"
             android:layout_height="wrap_content"
+            android:inputType="date"
             android:layout_alignParentEnd="true"
-            android:layout_below="@+id/activity_admin_add_package_package_id"
+            android:layout_below="@+id/activity_admin_add_package_package_name"
             android:layout_marginEnd="20dp"
             android:layout_marginTop="25dp"
             android:padding="5dp"
@@ -101,6 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="20dp"
+            android:inputType="date"
             android:layout_alignTop="@+id/textview4"
             android:layout_below="@+id/activity_admin_add_package_package_start_date"
             android:padding="5dp" />
@@ -122,6 +103,7 @@
             android:layout_width="215dp"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/textview5"
+            android:inputType="text"
             android:layout_marginEnd="20dp"
             android:layout_alignBottom="@+id/textview5"
             android:layout_alignStart="@+id/activity_admin_add_package_package_end_date"

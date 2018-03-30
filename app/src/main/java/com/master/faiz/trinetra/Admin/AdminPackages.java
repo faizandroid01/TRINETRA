@@ -27,14 +27,18 @@ public class AdminPackages extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_packages);
+        //toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
+
 
         Bundle b = getIntent().getExtras();
-        if(b!=null)
-         admin_project_name = b.getString("admin_project_name");
+        if (b != null) {
+            admin_project_name = b.getString("admin_project_name");
 
-        toolbar = (Toolbar) findViewById(R.id.MyToolbar);
-        toolbar.setTitle(admin_project_name);
+            toolbar = (Toolbar) findViewById(R.id.MyToolbar);
+            toolbar.setTitle(admin_project_name);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
+        }
         final String[] items = {"Pk 1", "Pk 2", "Pk 3", "Pk 4"};
         package_listView = (ListView) findViewById(R.id.admin_package_listview);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, items);

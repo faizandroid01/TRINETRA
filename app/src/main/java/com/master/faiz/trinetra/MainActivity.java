@@ -15,7 +15,7 @@ import com.master.faiz.trinetra.Supervisor.SupervisorLogin;
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    EditText userName;
+    EditText userName, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +24,16 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.app_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
 
-        userName = (EditText) findViewById(R.id.MainActivity_username);
+        userName = (EditText) findViewById(R.id.activity_main_username);
+        password = (EditText) findViewById(R.id.activity_main_password);
+
     }
 
     public void userLogin(View v) {
 
-        Toast.makeText(this, "Login Fun", Toast.LENGTH_SHORT).show();
 
         String a = userName.getText().toString();
 

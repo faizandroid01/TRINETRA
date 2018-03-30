@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ed2e55</color>
-    <color name="colorPrimaryDark">#66020f</color>
+    <color name="colorPrimary">#353434</color>
+    <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="appbar_background">#96c20000</color>
+    <color name="appbar_background">#f9201f1f</color>
     <color name="login_button_background">#c20000</color>
     <color name="button_stroke_color">#66020f</color>
     <color name="login_button_text_color">#ffffff</color>
@@ -13,5 +13,7 @@
     <color name="listview_background">#c4c3c9</color>
     <color name="datepicker_background">#ece6e6</color>
     <color name="linear_layout_background">#efebeb</color>
+    <color name="color_button">#789</color>
+    <color name="appbar_text_color">#fff</color>
 
 </resources>

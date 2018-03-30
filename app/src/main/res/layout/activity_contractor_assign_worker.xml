@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.master.faiz.trinetra.Contractor.ContractorAssignWorker">
 
     <include layout="@layout/app_bar" />
@@ -13,33 +12,45 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-               <Button
-                   android:layout_width="300dp"
-                   android:layout_height="80dp"
-                   android:layout_centerHorizontal="true"
-                   android:layout_marginTop="100dp"
-                   android:text="ASSIGN WORKER"
-                   android:textStyle="italic|bold"
-                   android:textSize="20dp"
-                   android:id="@+id/activity_contractor_assign_worker_assign_button"
-                   android:background="@color/colorAccent"
-                   android:onClick="contractorAssignPackageWorker"
-                   />
-
-
         <Button
+            android:id="@+id/activity_contractor_assign_worker_assign_worker"
             android:layout_width="300dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="100dp"
-            android:text="VIEW WORKER"
-            android:textStyle="italic|bold"
+            android:background="@color/colorAccent"
+            android:onClick="contractorAssignPackageWorker"
+            android:text="ASSIGN WORKER"
             android:textSize="20dp"
-            android:layout_below="@+id/activity_contractor_assign_worker_assign_button"
+            android:textStyle="italic|bold" />
+
+
+        <Button
             android:id="@+id/activity_contractor_assign_worker_view_button"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/activity_contractor_assign_worker_assign_worker"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
             android:background="@color/colorPrimary"
             android:onClick="contractorViewPackageWorker"
-            />
+            android:text="VIEW WORKER"
+            android:textSize="20dp"
+            android:textStyle="italic|bold" />
+
+        <Button
+            android:id="@+id/activity_contractor_assign_worker_assign_supervisor"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_below="@+id/activity_contractor_assign_worker_view_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:background="@color/color_button"
+            android:onClick="contractorAssignSupervisor"
+            android:text="ASSIGN SUPERVISOR"
+            android:textSize="20dp"
+            android:textStyle="italic|bold" />
+
 
     </RelativeLayout>
 

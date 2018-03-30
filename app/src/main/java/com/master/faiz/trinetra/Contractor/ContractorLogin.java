@@ -28,6 +28,7 @@ public class ContractorLogin extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle(R.string.admin_projects);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
         final String items[] = {"CP 1", "CP 2", "CP 3", "CP 4", "CP 5"};
         contractor_project_listView = (ListView) findViewById(R.id.contractor_projects_listview);

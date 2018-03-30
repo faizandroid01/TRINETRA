@@ -1,7 +1,7 @@
 package com.master.faiz.trinetra.Contractor;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
@@ -27,6 +27,8 @@ public class ContractorAssignPackageWorker extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle(contractor_package_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
+
 
 
 

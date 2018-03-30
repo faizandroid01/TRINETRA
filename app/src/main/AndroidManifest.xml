@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.master.faiz.trinetra">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,35 +11,82 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Admin.AdminProject" />
-        <activity android:name=".Admin.AdminPackages" />
-        <activity android:name=".Admin.AdminViewPackage" />
-        <activity android:name=".Admin.AdminViewContractors" />
-        <activity android:name=".Admin.AdminViewContractorDetails" />
-        <activity android:name=".Admin.AdminScheduleAttendance" />
+        <activity
+            android:name=".Admin.AdminProject"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminPackages"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminViewPackage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminViewContractors"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminViewContractorDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminScheduleAttendance"
+            android:screenOrientation="portrait" />
         <activity android:name=".Admin.AdminProjectReport" />
-        <activity android:name=".Admin.AdminViewProjectReport" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".Admin.AdminAddProject" />
-        <activity android:name=".Admin.AdminAddPackage" />
-        <activity android:name=".Admin.AdminAddContractor" />
-        <activity android:name=".Supervisor.SupervisorLogin" />
-        <activity android:name=".Supervisor.SupervisorPackageDetails" />
-        <activity android:name=".Supervisor.SupervisorShiftAssignment" />
-        <activity android:name=".Contractor.ContractorLogin" />
-        <activity android:name=".Contractor.ContractorViewPackage" />
-        <activity android:name=".Contractor.ContractorAddWorker" />
-        <activity android:name=".Contractor.ContractorViewWorker" />
-        <activity android:name=".Contractor.ContractorAssignWorker" />
-        <activity android:name=".Contractor.ContractorAssignPackageWorker" />
-        <activity android:name=".Contractor.ContractorViewPackageWorker"></activity>
+        <activity
+            android:name=".Admin.AdminViewProjectReport"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminAddProject"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminAddPackage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminAddContractor"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Supervisor.SupervisorLogin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Supervisor.SupervisorPackageDetails"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Supervisor.SupervisorShiftAssignment"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorLogin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorViewPackage"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorAddWorker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorViewWorker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorAssignWorker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorAssignPackageWorker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorViewPackageWorker"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Contractor.ContractorAssignSupervisor"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

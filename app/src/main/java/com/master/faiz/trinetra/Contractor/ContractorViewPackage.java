@@ -33,6 +33,7 @@ public class ContractorViewPackage extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle(project_name);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
         final String items[] = {"cpk 1", "cpk 2", "cpk 3", "cpk 4"};
         contractor_package_listView = (ListView) findViewById(R.id.activity_contractor_view_package_package_listview);

@@ -1,8 +1,8 @@
 package com.master.faiz.trinetra.Supervisor;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
@@ -26,6 +26,7 @@ public class SupervisorLogin extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle("PROJECTS");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
         ArrayAdapter<String> aa= new ArrayAdapter<String>(this , android.R.layout.simple_dropdown_item_1line , items);
         sup_project_listView.setAdapter(aa);

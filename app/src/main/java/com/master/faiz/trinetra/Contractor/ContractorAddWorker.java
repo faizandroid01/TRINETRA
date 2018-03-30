@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -15,11 +16,15 @@ public class ContractorAddWorker extends AppCompatActivity {
 
     ArrayAdapter<String> aa;
     Spinner cont_worker_type;
+    EditText wrkrName, wrkrAadharNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contractor_add_worker);
+
+        wrkrName = (EditText) findViewById(R.id.activity_contractor_add_worker_worker_name);
+        wrkrAadharNo = (EditText) findViewById(R.id.activity_contractor_add_worker_aadhar_no);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -30,6 +35,8 @@ public class ContractorAddWorker extends AppCompatActivity {
         }
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         toolbar.setTitle("ADD WORKKER");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
+
 
         String items[] = {"SKILLED/TEMPORARY", "SKILLED/PERMANENT", "SKILLED/DAILY WAGE", "SEMI-SKILLED/TEMPORARY", "SEMI-SKILLED/PERMANENT", "SEMI-SKILLED/DAILY WAGE", "UNSKILLED/TEMPORARY", "UNSKILLED/PERNANENT", "UNSKILLED/DAILY WAGE"};
         cont_worker_type = (Spinner) findViewById(R.id.activity_contractor_add_worker_worker_type_spinner);
