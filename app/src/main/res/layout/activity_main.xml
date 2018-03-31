@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.master.faiz.trinetra.MainActivity">
 
     <include layout="@layout/app_bar" />
@@ -12,58 +12,61 @@
 -->
 
     <LinearLayout
+        android:id="@+id/inner_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/inner_layout"
         android:orientation="vertical">
 
-    <EditText android:layout_height="wrap_content"
-        android:layout_width="250dp"
-        android:id="@+id/activity_main_username"
-        android:gravity="center"
-        android:textSize="15sp"
-        android:textColor="#fff"
-        android:layout_gravity="center"
-        android:textAlignment="gravity"
-        android:padding="5dp"
-        android:layout_marginTop="120dp"
-        android:background="@drawable/textview_background"
-        android:hint="UserName"
-        android:backgroundTint="@color/appbar_background"/>
-    <EditText android:layout_height="wrap_content"
-        android:layout_width="250dp"
-        android:id="@+id/activity_main_password"
-        android:layout_marginTop="25dp"
-        android:textSize="15sp"
-        android:textColor="#fff"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:textAlignment="gravity"
-        android:background="@drawable/textview_background"
-        android:padding="5dp"
-        android:hint="PassWord"
-        android:backgroundTint="@color/appbar_background"/>
+        <EditText
+            android:id="@+id/activity_main_username"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/textview_background"
+            android:backgroundTint="@color/appbar_background"
+            android:gravity="center"
+            android:hint="UserName"
+            android:padding="5dp"
+            android:textAlignment="gravity"
+            android:textColor="#fff"
+            android:textSize="15sp" />
 
-    <Button
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:id="@+id/MainActivity_loginbutton"
-        android:layout_marginTop="50dp"
-        android:text="LOGIN"
-        android:textColor="@color/login_button_text_color"
-        android:background="@drawable/login_button_background"
-        android:layout_gravity="center"
-        android:onClick="userLogin"/>
+        <EditText
+            android:id="@+id/activity_main_password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/textview_background"
+            android:backgroundTint="@color/appbar_background"
+            android:gravity="center"
+            android:hint="PassWord"
+            android:padding="5dp"
+            android:textAlignment="gravity"
+            android:textColor="#fff"
+            android:textSize="15sp" />
 
-    <Button
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:id="@+id/MainActivity_signupbutton"
-        android:textColor="@color/login_button_text_color"
-        android:layout_marginTop="30dp"
-        android:text="SIGNUP"
-        android:background="@drawable/login_button_background"
-        android:layout_gravity="center"
-        android:onClick="userRegister"/>
+        <Button
+            android:id="@+id/MainActivity_loginbutton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/login_button_background"
+            android:onClick="userLogin"
+            android:text="LOGIN"
+            android:textColor="@color/login_button_text_color" />
+
+        <Button
+            android:id="@+id/MainActivity_signupbutton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/login_button_background"
+            android:onClick="userRegister"
+            android:text="SIGNUP"
+            android:textColor="@color/login_button_text_color" />
     </LinearLayout>
 </LinearLayout>
