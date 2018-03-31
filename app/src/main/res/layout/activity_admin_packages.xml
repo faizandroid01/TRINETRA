@@ -10,8 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/packagelist"
@@ -27,24 +26,20 @@
             android:id="@+id/admin_package_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/listview_background"
             android:layout_below="@+id/packagelist"
             android:layout_margin="5dp"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:background="@color/listview_background" />
+
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/admin_package_add_package_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_input_add"
-            android:id="@+id/admin_package_add_package_button"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_margin="20dp"
             android:onClick="adminAddPackage"
-            />
+            android:src="@android:drawable/ic_input_add" />
 
     </RelativeLayout>
-
-
-
-
 </LinearLayout>

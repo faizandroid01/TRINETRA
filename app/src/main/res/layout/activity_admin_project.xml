@@ -39,6 +39,7 @@
         <ListView android:layout_height="match_parent"
             android:layout_width="match_parent"
             android:id="@+id/admin_project_listview"
+            android:layout_below="@+id/welcome"
             android:background="@color/listview_background"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"

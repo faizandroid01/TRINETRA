@@ -1,14 +1,17 @@
 package com.master.faiz.trinetra.Admin;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -16,13 +19,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.master.faiz.trinetra.R;
 
-import Utils.DataWrapper;
+import java.util.ArrayList;
+
 import Utils.VolleySingleton;
 
 public class AdminProjectReport extends AppCompatActivity {
     Toolbar toolbar;
     ListView contractor_list;
     DatePicker datePicker;
+    private ProgressDialog progressDialog;
+    ArrayList<String> contractorList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,24 +44,46 @@ public class AdminProjectReport extends AppCompatActivity {
 
 
         //@GET Method --  fetch the contractorList within admin  .
-        StringRequest request = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(" Fetching contractor List ...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        contractorList = new ArrayList<>();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, null, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-
-                // parse contractor List  and store it in Arraylist
+                progressDialog.dismiss();
+                // parse the response and assign it to ArrayList contractorList and then assign array list items to items []  ..
+                // @GET Method --  fetch the adminName and his projects corresponding to project id  .
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+
+                Log.i("Error: ", error.getMessage());
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                // hide the progress dialog
 
 
             }
         });
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
+       /* final String items[] = new String[project_list.size()];
+
+        for (int i = 0; i < project_list.size(); i++) {
+
+            items[i] = project_list.get(i);
+
+        }*/
 
 
-        VolleySingleton.getInstance(this).addToRequestQueue(request);
+
 
         //@Assign After getting the projects list in response,, Assign it to the items array below to display it in listview
 

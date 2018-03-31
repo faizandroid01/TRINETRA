@@ -1,11 +1,13 @@
 package com.master.faiz.trinetra.Admin;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +21,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.master.faiz.trinetra.R;
 
-import Utils.DataWrapper;
+import java.util.ArrayList;
+
 import Utils.VolleySingleton;
 
 public class AdminProject extends AppCompatActivity {
@@ -29,7 +32,8 @@ public class AdminProject extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     String admin_project_name;
     TextView adminName;
-
+    ArrayList<String> project_list;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,25 +45,43 @@ public class AdminProject extends AppCompatActivity {
         toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
 
-        //@GET Method --  fetch the adminName and his projects corresponding to project id  .
-        StringRequest request = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(" Fetching project List ...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        project_list = new ArrayList<>();
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, null, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                //@Parse and assign to var-@adminName
-                // parse adminProjects  and store it in Arraylist
+                progressDialog.dismiss();
+                // parse the response and assign it to ArrayList package_list and then assign array list items to items []  ..
+                // @GET Method --  fetch the adminName and his projects corresponding to project id  .
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+
+                Log.i("Error: ", error.getMessage());
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                // hide the progress dialog
 
 
             }
         });
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
+       /* final String items[] = new String[project_list.size()];
 
-        VolleySingleton.getInstance(this).addToRequestQueue(request);
+        for (int i = 0; i < project_list.size(); i++) {
+
+            items[i] = project_list.get(i);
+
+        }*/
 
 
         //@Assign After getting the projects list in response,, Assign it to the items array below to display it in listview
@@ -109,7 +131,7 @@ public class AdminProject extends AppCompatActivity {
 
                     }
                 }).create()
-                  .show();
+                        .show();
 
 
                 return true;

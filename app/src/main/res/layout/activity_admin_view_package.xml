@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/activity_admin_view_package_linear_layout"
     android:orientation="vertical"
     tools:context="com.master.faiz.trinetra.Admin.AdminViewPackage">
 
@@ -14,7 +15,6 @@
 
         >
 
-
         <TextView
             android:id="@+id/textview1"
             android:layout_width="@dimen/acitivity_admin_view_package_textviews_width"
@@ -23,9 +23,7 @@
             android:layout_marginTop="20dp"
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
             android:text="Package Name :"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
 
         <TextView
@@ -38,9 +36,7 @@
             android:layout_toRightOf="@+id/textview1"
             android:hint="P Name "
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
 
         <TextView
@@ -52,9 +48,7 @@
             android:layout_marginTop="20dp"
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
             android:text="Package Location :"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
         <TextView
             android:id="@+id/activity_admin_view_package_package_location"
@@ -67,9 +61,7 @@
             android:layout_toRightOf="@+id/textview2"
             android:hint="P Loc "
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
         <TextView
             android:id="@+id/textview3"
@@ -80,9 +72,7 @@
             android:layout_marginTop="20dp"
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
             android:text="Package Start Date :"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
         <TextView
             android:id="@+id/activity_admin_view_package_package_start_date"
@@ -95,9 +85,7 @@
             android:layout_toRightOf="@+id/textview2"
             android:hint="P Start Date "
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
 
         <TextView
@@ -109,9 +97,7 @@
             android:layout_marginTop="20dp"
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
             android:text="Package End Date :"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
         <TextView
             android:id="@+id/activity_admin_view_package_package_end_date"
@@ -124,9 +110,7 @@
             android:layout_toRightOf="@+id/textview2"
             android:hint="P End Date "
             android:padding="@dimen/acitivity_admin_view_package_textviews_padding"
-            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize"
-
-            />
+            android:textSize="@dimen/acitivity_admin_view_package_textviews_textSize" />
 
 
         <Button

@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#353434</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#ff871c</color>
     <color name="appbar_background">#f9201f1f</color>
     <color name="login_button_background">#c20000</color>
     <color name="button_stroke_color">#66020f</color>

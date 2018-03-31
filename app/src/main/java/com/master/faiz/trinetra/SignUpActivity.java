@@ -1,12 +1,15 @@
 package com.master.faiz.trinetra;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -29,7 +32,8 @@ public class SignUpActivity extends AppCompatActivity {
     Spinner spinner;
     String spinner_items[] = {"ADMIN", "CONTRACTOR", "SUPERVISOR"};
     String spinner_val;
-
+    private ProgressDialog progressDialog;
+    LinearLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
         userPassword = (EditText) findViewById(R.id.activity_sign_up_password);
         userAadhar = (EditText) findViewById(R.id.activity_sign_up_aadhar_id);
         spinner = (Spinner) findViewById(R.id.user_signup_type_spinner);
+        linearLayout = (LinearLayout) findViewById(R.id.activity_sign_up_linear_layout);
 
         toolbar = (Toolbar) findViewById(R.id.MyToolbar);
         setSupportActionBar(toolbar);
@@ -57,9 +62,13 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void userSignUp(View view) {
 
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Wait !! Adding Project ...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
         // Taking value from spinner
-
-
         String spinner_text = spinner.getSelectedItem().toString();
         if (spinner_text.equals(spinner_items[0])) {
             spinner_val = DataWrapper.AC_ADMIN;
@@ -74,7 +83,14 @@ public class SignUpActivity extends AppCompatActivity {
         StringRequest request = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                progressDialog.dismiss();
                 Toast.makeText(SignUpActivity.this, "" + response, Toast.LENGTH_SHORT).show();
+
+                if (response == "") {
+                    Snackbar.make(linearLayout, "Sign up Successfull ..", Snackbar.LENGTH_SHORT);
+                } else {
+                    Snackbar.make(linearLayout, "Sign Up Failed !!", Snackbar.LENGTH_SHORT);
+                }
 
 
                 Log.i("", response);
