@@ -75,6 +75,17 @@ public class DataWrapper {
     public static String Q_CREATE_AUTHENTICATION = "create_authentication";
     public static String Q_READ_AUTHENTICATION = "read_authentication";
 
+    public static String WORKER_TYPE_1 = "SKILLED/TEMPORARY";
+    public static String WORKER_TYPE_2 = "SKILLED/PERMANENT";
+    public static String WORKER_TYPE_3 = "SKILLED/DAILY WAGE";
+    public static String WORKER_TYPE_4 = "SEMI-SKILLED/TEMPORARY";
+    public static String WORKER_TYPE_5 = "SEMI-SKILLED/PERMANENT";
+    public static String WORKER_TYPE_6 = "SEMI-SKILLED/DAILY WAGE";
+    public static String WORKER_TYPE_7 = "UNSKILLED/TEMPORARY";
+    public static String WORKER_TYPE_8 = "UNSKILLED/PERNANENT";
+    public static String WORKER_TYPE_9 = "UNSKILLED/DAILY WAGE";
+
+
 
 }
 
