@@ -56,6 +56,7 @@
             android:layout_below="@+id/activity_admin_add_project_project_name"
             android:id="@+id/activity_admin_add_project_project_start_date"
             android:layout_alignParentEnd="true"
+            android:onClick="startDate"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
 
@@ -90,6 +91,7 @@
             android:padding="6dp"
             android:layout_below="@+id/textview4"
             android:id="@+id/textview5"
+            android:onClick="endDate"
             android:text="Project Location :"
             android:layout_marginTop="25dp"
             android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"

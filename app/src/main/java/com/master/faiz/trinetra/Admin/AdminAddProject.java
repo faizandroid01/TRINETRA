@@ -108,13 +108,13 @@ public class AdminAddProject extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
 
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("", adminProjectName.getText().toString());
-                    params.put("", adminProjectStrtDate.getText().toString());
-                    params.put("", adminProjectEndDate.getText().toString());
-                    params.put("", adminProjectLocation.getText().toString());
+                    params.put("project_name", adminProjectName.getText().toString());
+                    params.put("project_start_date", adminProjectStrtDate.getText().toString());
+                    params.put("project_end_date", adminProjectEndDate.getText().toString());
+                    params.put("project_location", adminProjectLocation.getText().toString());
 
-                    params.put("module", "");
-                    params.put("query", " ");
+                    params.put("module", "project");
+                    params.put("query", "create_project");
                     params.put("query_type", DataWrapper.QTYPE_I);
 
                     return params;
@@ -128,5 +128,11 @@ public class AdminAddProject extends AppCompatActivity {
         }
 
 
+    }
+
+    public void startDate(View view) {
+    }
+
+    public void endDate(View view) {
     }
 }

@@ -85,6 +85,11 @@ public class DataWrapper {
     public static String WORKER_TYPE_8 = "UNSKILLED/PERNANENT";
     public static String WORKER_TYPE_9 = "UNSKILLED/DAILY WAGE";
 
+    public static String EMAIL_EXISTS = "-101";
+    public static String AADHAR_EXISTS = "-102";
+    public static String BOTH_EXISTS = "-103";
+
+
 
 
 }

@@ -34,6 +34,7 @@ public class AdminProject extends AppCompatActivity {
     TextView adminName;
     ArrayList<String> project_list;
     private ProgressDialog progressDialog;
+    String bundle_adminName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,22 @@ public class AdminProject extends AppCompatActivity {
         adminName = (TextView) findViewById(R.id.activity_admin_project_admin_name);
         toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
+        // @receive values from Login Activity ..
 
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+
+            b.get("user_email");
+            b.get("user_type");
+            b.get("user_aadhar");
+            bundle_adminName = b.getString("user_name");
+        }
+
+        // @assign bundle stuffs
+
+        adminName.setText(bundle_adminName);
+
+        //@ dialog progress stuffs ..
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage(" Fetching project List ...");
         progressDialog.setCancelable(false);
@@ -97,7 +113,7 @@ public class AdminProject extends AppCompatActivity {
 
                 admin_project_name = items[position];
                 Intent intent = new Intent(AdminProject.this, AdminPackages.class);
-                intent.putExtra("admin_project_name", admin_project_name);
+                //   intent.putExtra("admin_project_name", admin_project_name);
                 startActivity(intent);
 
             }

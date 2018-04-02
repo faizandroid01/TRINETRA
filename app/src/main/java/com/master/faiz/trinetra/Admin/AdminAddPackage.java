@@ -109,13 +109,13 @@ public class AdminAddPackage extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
 
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("", packageName.getText().toString());
-                    params.put("", packageStrtDate.getText().toString());
-                    params.put("", packageEndDate.getText().toString());
-                    params.put("", packageLocation.getText().toString());
+                    params.put("package_name", packageName.getText().toString());
+                    params.put("package_start_date", packageStrtDate.getText().toString());
+                    params.put("package_end_date", packageEndDate.getText().toString());
+                    params.put("package_location", packageLocation.getText().toString());
 
-                    params.put("module", "");
-                    params.put("query", " ");
+                    params.put("module", "package");
+                    params.put("query", "create_package");
                     params.put("query_type", DataWrapper.QTYPE_I);
 
                     return params;

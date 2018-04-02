@@ -93,10 +93,12 @@ public class AdminAddContractor extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
 
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("", email);
-
-                    params.put("module", "");
-                    params.put("query", "");
+                 /*   params.put("user_added_email", email);
+                    params.put("user_adder_id", ); // signed in admin ID
+                    params.put("project_id",);     //  current project id
+*/
+                    params.put("module", "user_project");
+                    params.put("query", "add_user_project");
                     params.put("query_type", DataWrapper.QTYPE_I);
 
 

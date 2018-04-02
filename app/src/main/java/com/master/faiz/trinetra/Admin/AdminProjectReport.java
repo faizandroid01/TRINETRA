@@ -100,7 +100,8 @@ public class AdminProjectReport extends AppCompatActivity {
                 int date = datePicker.getDayOfMonth();
                 int month = datePicker.getMonth();
                 int year = datePicker.getYear();
-
+                String requiredDate = date + "/" + month + "/" + year;
+                Toast.makeText(AdminProjectReport.this, "" + requiredDate, Toast.LENGTH_SHORT).show();
               // for the above date
 
                 String contractor_name = items[position];

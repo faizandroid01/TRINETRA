@@ -1,6 +1,7 @@
 package com.master.faiz.trinetra;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,10 +19,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import Utils.DataWrapper;
+import Utils.Tools;
 import Utils.VolleySingleton;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -84,16 +88,33 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 progressDialog.dismiss();
-                Toast.makeText(SignUpActivity.this, "" + response, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SignUpActivity.this, "" + response, Toast.LENGTH_SHORT).show();
+                JSONObject res;
+                try {
 
-                if (response == "") {
-                    Snackbar.make(linearLayout, "Sign up Successfull ..", Snackbar.LENGTH_SHORT);
-                } else {
-                    Snackbar.make(linearLayout, "Sign Up Failed !!", Snackbar.LENGTH_SHORT);
+                    res = new JSONObject(response);
+                    String ress = (String) res.get("status");
+                    if (ress.equals(DataWrapper.EMAIL_EXISTS)) {
+                        Snackbar.make(linearLayout, "User Email Already Exists !!", Snackbar.LENGTH_SHORT);
+
+                    } else if (ress.equals(DataWrapper.AADHAR_EXISTS)) {
+                        Snackbar.make(linearLayout, "User Aadhar Already Exists !!", Snackbar.LENGTH_SHORT);
+
+                    } else if (ress.equals(DataWrapper.BOTH_EXISTS)) {
+                        Snackbar.make(linearLayout, "Email and Aadhar is already regisetred !!", Snackbar.LENGTH_SHORT);
+
+                    } else {
+                        Snackbar.make(linearLayout, "Sign Successful !!", Snackbar.LENGTH_SHORT);
+                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+
+                    }
+                } catch (JSONException e) {
+                    Log.e("line 96", "JSON EX");
                 }
 
-
                 Log.i("", response);
+
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -107,7 +128,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 params.put("name", userName.getText().toString());
                 params.put("email", userEmail.getText().toString());
-                params.put("password", userPassword.getText().toString());
+                params.put("password", Tools.salty(userPassword.getText().toString()));
                 params.put("user_type", spinner_val);
                 params.put("aadhar_id", userAadhar.getText().toString());
 
@@ -115,6 +136,7 @@ public class SignUpActivity extends AppCompatActivity {
                 params.put("query", DataWrapper.Q_CREATE_ACCOUNT);
                 params.put("query_type", DataWrapper.QTYPE_I);
 
+                Log.i("line no 118", params.toString());
                 return params;
 
             }

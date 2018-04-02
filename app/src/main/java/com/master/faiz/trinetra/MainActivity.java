@@ -21,10 +21,14 @@ import com.master.faiz.trinetra.Admin.AdminProject;
 import com.master.faiz.trinetra.Contractor.ContractorLogin;
 import com.master.faiz.trinetra.Supervisor.SupervisorLogin;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import Utils.DataWrapper;
+import Utils.Tools;
 import Utils.VolleySingleton;
 
 public class MainActivity extends AppCompatActivity {
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     EditText userName, password;
     LinearLayout linearLayout;
     ProgressDialog progressDialog;
+    Intent activity_transfer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.app_name);
         toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
-
+        progressDialog = new ProgressDialog(this);
 
         userName = (EditText) findViewById(R.id.activity_main_username);
         password = (EditText) findViewById(R.id.activity_main_password);
@@ -58,12 +63,99 @@ public class MainActivity extends AppCompatActivity {
             progressDialog.show();
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, null, new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
 
                     progressDialog.dismiss();
+
+                    JSONObject res;
+                    try {
+
+
+                        res = new JSONObject(response);
+
+                        Log.e("response", response);
+
+                        if (res.has("status")) {
+
+                            String status = (String) res.get("status");
+                            Toast.makeText(MainActivity.this, "Invalid Email or Password !", Toast.LENGTH_SHORT).show();
+                        }
+
+
+/*{
+*
+* {
+*   status : -1
+*   }
+*
+*
+*   {
+*
+*       email_id (data) : {
+*              :
+*           user_id : ,
+*           aadhar_id : ,
+*           name :
+*           user_type,
+ *          password :
+ *
+ *
+ *      }
+ *
+    }
+
+
+    {
+        subham@gmail.com : {
+
+            user_id : 2422,
+            user_name : ...
+
+           ]}
+}
+* */
+
+
+                        else {
+
+                            JSONObject xx = res.getJSONObject(userName.getText().toString().trim());// new JSONObject(userName.getText().toString().trim());
+
+                            String user_id = (String) xx.get("user_id");
+                            Log.i("line no 128", user_id);
+                            String user_passsword = (String) xx.get("password");
+                            String user_aadhar = (String) xx.get("aadhar_id");
+                            String user_name = (String) xx.get("name");
+                            String user_type = (String) xx.get("user_type");
+
+
+                            if (user_type == DataWrapper.AC_ADMIN) {
+                                activity_transfer = new Intent(MainActivity.this, AdminProject.class);
+                                activity_transfer.putExtra("user_id", user_id);
+                                activity_transfer.putExtra("user_name", user_name);
+                                activity_transfer.putExtra("user_aadhar", user_aadhar);
+                                activity_transfer.putExtra("user_type", user_type);
+                            }
+                            if (user_type == DataWrapper.AC_CONTRACTOR) {
+                                activity_transfer = new Intent(MainActivity.this, ContractorLogin.class);
+                            }
+                            if (user_type == DataWrapper.AC_SUPERVISOR) {
+                                activity_transfer = new Intent(MainActivity.this, SupervisorLogin.class);
+                            }
+
+
+                            startActivity(activity_transfer);
+                            Toast.makeText(MainActivity.this, "Login Successful..", Toast.LENGTH_SHORT).show();
+                            // Snackbar.make(linearLayout, "Sign Successful !!", Snackbar.LENGTH_SHORT);
+
+                        }
+                    } catch (JSONException e) {
+                        Log.e("line 96", "JSON EX");
+                    }
+
+                    Log.i("", response);
 
                /*     if(status==false)
                     {
@@ -94,12 +186,12 @@ public class MainActivity extends AppCompatActivity {
                 protected Map<String, String> getParams() throws AuthFailureError {
 
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("", userName.getText().toString());
-                    params.put("", password.getText().toString());
+                    params.put("email", userName.getText().toString());
+                    params.put("password", Tools.salty(password.getText().toString()));
 
-                    params.put("module", "");
-                    params.put("query", "");
-                    params.put("query_type", DataWrapper.QTYPE_I);
+                    params.put("module", "user");
+                    params.put("query", "sign_in");
+                    params.put("query_type", DataWrapper.QTYPE_O);
 
 
                     return params;
