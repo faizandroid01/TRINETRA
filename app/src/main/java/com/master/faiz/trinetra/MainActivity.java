@@ -72,102 +72,51 @@ public class MainActivity extends AppCompatActivity {
 
                     JSONObject res;
                     try {
-
-
                         res = new JSONObject(response);
-
-                        Log.e("response", response);
-
+                        // Log.e("response", response);
                         if (res.has("status")) {
-
                             String status = (String) res.get("status");
-                            Toast.makeText(MainActivity.this, "Invalid Email or Password !", Toast.LENGTH_SHORT).show();
-                        }
-
-
-/*{
-*
-* {
-*   status : -1
-*   }
-*
-*
-*   {
-*
-*       email_id (data) : {
-*              :
-*           user_id : ,
-*           aadhar_id : ,
-*           name :
-*           user_type,
- *          password :
- *
- *
- *      }
- *
-    }
-
-
-    {
-        subham@gmail.com : {
-
-            user_id : 2422,
-            user_name : ...
-
-           ]}
-}
-* */
-
-
-                        else {
-
+                            Snackbar.make(linearLayout, "Invalid Email or Password !", Snackbar.LENGTH_SHORT).show();
+                        } else {
                             JSONObject xx = res.getJSONObject(userName.getText().toString().trim());// new JSONObject(userName.getText().toString().trim());
 
                             String user_id = (String) xx.get("user_id");
-                            Log.i("line no 128", user_id);
+                            //     Log.i("line no 128", user_id);
                             String user_passsword = (String) xx.get("password");
                             String user_aadhar = (String) xx.get("aadhar_id");
                             String user_name = (String) xx.get("name");
                             String user_type = (String) xx.get("user_type");
 
 
-                            if (user_type == DataWrapper.AC_ADMIN) {
+                            if (user_type.equals(DataWrapper.AC_ADMIN)) {
+
+                                //    Log.i("line no 126", "AC_admin compared");
                                 activity_transfer = new Intent(MainActivity.this, AdminProject.class);
                                 activity_transfer.putExtra("user_id", user_id);
                                 activity_transfer.putExtra("user_name", user_name);
                                 activity_transfer.putExtra("user_aadhar", user_aadhar);
                                 activity_transfer.putExtra("user_type", user_type);
                             }
-                            if (user_type == DataWrapper.AC_CONTRACTOR) {
+                            if (user_type.equals(DataWrapper.AC_CONTRACTOR)) {
                                 activity_transfer = new Intent(MainActivity.this, ContractorLogin.class);
                             }
-                            if (user_type == DataWrapper.AC_SUPERVISOR) {
+                            if (user_type.equals(DataWrapper.AC_SUPERVISOR)) {
                                 activity_transfer = new Intent(MainActivity.this, SupervisorLogin.class);
                             }
 
 
                             startActivity(activity_transfer);
                             Toast.makeText(MainActivity.this, "Login Successful..", Toast.LENGTH_SHORT).show();
-                            // Snackbar.make(linearLayout, "Sign Successful !!", Snackbar.LENGTH_SHORT);
+                            Snackbar.make(linearLayout, "Login Successful !!", Snackbar.LENGTH_LONG);
 
                         }
                     } catch (JSONException e) {
                         Log.e("line 96", "JSON EX");
                     }
 
-                    Log.i("", response);
+                    //    Log.i("", response);
 
-               /*     if(status==false)
-                    {
-                       Snackbar.make(linearLayout , "Sign In failed!! Try Again .." , Snackbar.LENGTH_SHORT);
 
-                    }else
-                        {
-                            Snackbar.make(linearLayout , "Sign Up Successful .." , Snackbar.LENGTH_SHORT);
-                            startActivity(new Intent(AdminAddContractor.this, MainActivity.class));
-
-                        }
-*/
                 }
             }, new Response.ErrorListener() {
                 @Override

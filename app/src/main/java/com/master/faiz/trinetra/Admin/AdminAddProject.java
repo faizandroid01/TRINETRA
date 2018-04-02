@@ -27,7 +27,7 @@ import Utils.VolleySingleton;
 public class AdminAddProject extends AppCompatActivity {
 
     Toolbar toolbar;
-    String admin_project_name;
+    String admin_id;
     EditText adminProjectName, adminProjectStrtDate, adminProjectEndDate, adminProjectLocation;
     private ProgressDialog progressDialog;
     LinearLayout linearLayout;
@@ -50,12 +50,11 @@ public class AdminAddProject extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
-            admin_project_name = b.getString("admin_project_name");
-
-            // fetch the details from data base regarding "admin_project_name" and show it in fields available ,, except the PID , which is auto generated ..
-
-
+            admin_id = b.getString("user_id");
         }
+
+
+        // fetch the details from data base regarding "admin_project_name" and show it in fields available ,, except the PID , which is auto generated ..
 
 
     }
@@ -73,14 +72,21 @@ public class AdminAddProject extends AppCompatActivity {
             progressDialog.show();
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, null, new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
-
                     progressDialog.dismiss();
 
-               /*     if(status==false)
+                    Log.i("line no 81", response);
+
+
+               /*
+
+
+
+
+                 if(status==false)
                     {
                        Snackbar.make(linearLayout , "Failed !!" , Snackbar.LENGTH_SHORT);
 
@@ -112,6 +118,7 @@ public class AdminAddProject extends AppCompatActivity {
                     params.put("project_start_date", adminProjectStrtDate.getText().toString());
                     params.put("project_end_date", adminProjectEndDate.getText().toString());
                     params.put("project_location", adminProjectLocation.getText().toString());
+                    params.put("user_id", admin_id);
 
                     params.put("module", "project");
                     params.put("query", "create_project");
