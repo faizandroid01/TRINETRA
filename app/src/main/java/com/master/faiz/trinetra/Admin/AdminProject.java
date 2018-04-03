@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -17,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -27,6 +27,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import Utils.DataWrapper;
 import Utils.VolleySingleton;
@@ -81,12 +83,11 @@ public class AdminProject extends AppCompatActivity {
         project_name_list = new ArrayList<>();
         project_id_list = new ArrayList<>();
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
-                Toast.makeText(AdminProject.this, "" + response, Toast.LENGTH_SHORT).show();
-                progressDialog.dismiss();
+
                 // parse the response and assign it to ArrayList package_list and then assign array list items to items []  ..
                 // @GET Method --  fetch the adminName and his projects corresponding to project id  .
 
@@ -96,7 +97,9 @@ public class AdminProject extends AppCompatActivity {
                     * {
                     * status : -1
                     * }
-                    *
+
+
+                    *{
                     *      project_id, {
                     *
                     *           project_name,
@@ -113,26 +116,51 @@ public class AdminProject extends AppCompatActivity {
                     *           project_end_dat
                     *           },
                     *
-                    *
+                    *}
                     * */
 
 
+                Toast.makeText(AdminProject.this, "" + response, Toast.LENGTH_SHORT).show();
+                Log.i("line no 92", response);
+                progressDialog.dismiss();
+
+
                 try {
-                    JSONObject res = new JSONObject(response);
+                    JSONObject xx = new JSONObject(response);
+                    if (xx.has("status")) {
+                        Toast.makeText(AdminProject.this, "No current Projects available", Toast.LENGTH_SHORT).show();
+                    } else {
 
-                    if (res.has("status")) {
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+
+          /*     JSONArray res;
+                try {
+                     res = new JSONArray(response);
+
+                    if (res.length()==1) {
                         Snackbar.make(linearLayout, "No current Projects available", Snackbar.LENGTH_SHORT).show();
-                    } /*else {
+                    }else {
 
-                        JSONArray jsonArray = new JSONArray(response);
+                       // JSONObject jsonObject = new JSONObject(response);
                         Log.i("line no 138", "Converted to jsonArray");
 
-                        for (int i = 0; i < jsonArray.length(); i++) {
+                        for (int i = 0; i < res.length(); i++) {
 
-                            JSONObject jsonObject = jsonArray.getJSONObject(i);
+                            JSONObject jsonObject = res.getJSONObject(i);
 
-                            fetched_project_id = jsonObject.toString();
-                            project_id_list.add(fetched_project_id);
+//                            fetched_project_id = jsonObject.toString();
+  //                          Log.i("line 168 ", fetched_project_id);
+               //             project_id_list.add(fetched_project_id);
                             Log.i("line no 141", "Added");
                             fetched_project_name = jsonObject.getString("project_name");
                             project_name_list.add(fetched_project_name);
@@ -140,12 +168,13 @@ public class AdminProject extends AppCompatActivity {
                             jsonObject.getString("project_start_date");
                             jsonObject.getString("project_end_date");
 
-                        }*/
+                        }
 
-                    //  }
+                     }
                 } catch (JSONException e) {
+                    e.printStackTrace();
                     Log.e("line 157", "JSON EX");
-                }
+                }*/
 
 
             }
@@ -160,7 +189,21 @@ public class AdminProject extends AppCompatActivity {
 
 
             }
-        });
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("user_added_id", bundle_project_id);
+
+                params.put("module", "project");
+                params.put("query_type", DataWrapper.QTYPE_O);
+                params.put("query", "read_projects");
+
+
+                return params;
+            }
+        };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
         final String items[] = new String[project_name_list.size()];
