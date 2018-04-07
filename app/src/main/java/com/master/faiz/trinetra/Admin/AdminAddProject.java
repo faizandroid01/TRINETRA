@@ -1,6 +1,7 @@
 package com.master.faiz.trinetra.Admin;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -17,6 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.master.faiz.trinetra.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +30,7 @@ import Utils.VolleySingleton;
 public class AdminAddProject extends AppCompatActivity {
 
     Toolbar toolbar;
-    String admin_id;
+    String user_id, user_name;
     EditText adminProjectName, adminProjectStrtDate, adminProjectEndDate, adminProjectLocation;
     private ProgressDialog progressDialog;
     LinearLayout linearLayout;
@@ -48,9 +51,11 @@ public class AdminAddProject extends AppCompatActivity {
         adminProjectLocation = (EditText) findViewById(R.id.activity_admin_add_project_project_location);
         linearLayout = (LinearLayout) findViewById(R.id.acitivity_admin_add_project_linearLayout);
 
+
         Bundle b = getIntent().getExtras();
         if (b != null) {
-            admin_id = b.getString("user_id");
+            user_id = b.getString("user_id");
+            user_name = b.getString("user_name");
         }
 
 
@@ -58,6 +63,7 @@ public class AdminAddProject extends AppCompatActivity {
 
 
     }
+
 
     public void saveProjectDetails(View view) {
 
@@ -77,34 +83,40 @@ public class AdminAddProject extends AppCompatActivity {
                 public void onResponse(String response) {
 
                     progressDialog.dismiss();
-
                     Log.i("line no 81", response);
 
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
 
-               /*
+                        if (jsonObject.has("status")) {
+                            int status = Integer.parseInt(jsonObject.getString("status"));
+
+                            if (status == -1) {
+                                Snackbar.make(linearLayout, "Project Not Added .. Try Again", Snackbar.LENGTH_LONG).show();
+                            } else {
+                                Snackbar.make(linearLayout, "Project Added", Snackbar.LENGTH_LONG).show();
+                                Intent i = new Intent(AdminAddProject.this, AdminProject.class);
+                                i.putExtra("user_id", user_id);
+                                i.putExtra("user_name", user_name);
 
 
+                                startActivity(i);
+                                finish();
 
-
-                 if(status==false)
-                    {
-                       Snackbar.make(linearLayout , "Failed !!" , Snackbar.LENGTH_SHORT);
-
-                    }else
-                        {
-                            Snackbar.make(linearLayout , "Details Added Successfully .. " , Snackbar.LENGTH_SHORT);
-                             startActivity(new Intent(AdminAddProject.this,AdminProject.class));
+                            }
                         }
-*/
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.dismiss();
 
-                    Log.i("Error: ", error.getMessage());
-                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    // hide the progress dialog
+                    Log.i("Error: ", "some volley error");
 
 
                 }
@@ -118,7 +130,7 @@ public class AdminAddProject extends AppCompatActivity {
                     params.put("project_start_date", adminProjectStrtDate.getText().toString());
                     params.put("project_end_date", adminProjectEndDate.getText().toString());
                     params.put("project_location", adminProjectLocation.getText().toString());
-                    params.put("user_id", admin_id);
+                    params.put("user_id", user_id);
 
                     params.put("module", "project");
                     params.put("query", "create_project");

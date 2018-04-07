@@ -19,18 +19,26 @@
             android:layout_marginStart="@dimen/acitivity_admin_view_package_textviews_margin_start"
             android:layout_marginTop="20dp"
             android:text="PACKAGE WORKER LIST"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <ListView
-            android:id="@+id/contractor_package_worker_listview"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout_contractor_view_package_worker_panel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/textview1"
-            android:layout_margin="10dp"
-            android:background="@color/listview_background"
+            android:layout_height="wrap_content"
 
-            />
+            android:layout_below="@+id/textview1"
+            android:layout_margin="@dimen/listview_margin">
+
+            <ListView
+                android:id="@+id/contractor_package_worker_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="@color/listview_background"
+
+                />
+        </android.support.v4.widget.SwipeRefreshLayout>
     </RelativeLayout>
 
 

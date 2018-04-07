@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -68,7 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Wait !! Adding Project ...");
+        progressDialog.setMessage("Wait !! Adding User ...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
@@ -89,27 +90,36 @@ public class SignUpActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 progressDialog.dismiss();
 //                Toast.makeText(SignUpActivity.this, "" + response, Toast.LENGTH_SHORT).show();
-                JSONObject res;
+                Log.e("response", response);
+                JSONObject ress;
                 try {
+                    ress = new JSONObject(response);
 
-                    res = new JSONObject(response);
-                    String ress = (String) res.get("status");
-                    if (ress.equals(DataWrapper.EMAIL_EXISTS)) {
-                        Snackbar.make(linearLayout, "User Email Already Exists !!", Snackbar.LENGTH_SHORT);
 
-                    } else if (ress.equals(DataWrapper.AADHAR_EXISTS)) {
-                        Snackbar.make(linearLayout, "User Aadhar Already Exists !!", Snackbar.LENGTH_SHORT);
+                    if (ress.has("status")) {
 
-                    } else if (ress.equals(DataWrapper.BOTH_EXISTS)) {
-                        Snackbar.make(linearLayout, "Email and Aadhar is already regisetred !!", Snackbar.LENGTH_SHORT);
+                        String status = (String) ress.get("status");
+                        if (status.equals(DataWrapper.NOT_EXIST)) {
+                            Snackbar.make(linearLayout, "Error !!", Snackbar.LENGTH_LONG);
+                        } else if (status.equals(DataWrapper.EMAIL_EXISTS)) {
+                            Snackbar.make(linearLayout, "User Email Already Exists !!", Snackbar.LENGTH_LONG);
 
+                        } else if (status.equals(DataWrapper.AADHAR_EXISTS)) {
+                            Snackbar.make(linearLayout, "User Aadhar Already Exists !!", Snackbar.LENGTH_LONG);
+
+                        } else if (status.equals(DataWrapper.BOTH_EXISTS)) {
+                            Snackbar.make(linearLayout, "Email and Aadhar is already regisetred !!", Snackbar.LENGTH_LONG);
+
+                        } else {
+                            Snackbar.make(linearLayout, "Sign Successful !!", Snackbar.LENGTH_LONG);
+                            startActivity(new Intent(SignUpActivity.this, MainActivity.class));
+
+                        }
                     } else {
-                        Snackbar.make(linearLayout, "Sign Successful !!", Snackbar.LENGTH_SHORT);
-                        startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-
+                        Toast.makeText(SignUpActivity.this, "Try Again", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
-                    Log.e("line 96", "JSON EX");
+                    Log.e("line 112", "JSON EX");
                 }
 
                 Log.i("", response);

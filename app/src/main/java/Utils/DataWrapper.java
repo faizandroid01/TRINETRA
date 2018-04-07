@@ -31,7 +31,9 @@ public class DataWrapper {
 
     // query String
 
-    public static String BASE_URL_LOCAL = "http://192.168.43.122/subham/trinetra/design.php";
+//    public static String BASE_URL_TEST = "http://192.168.31.20/trinetra/design.php";
+
+    public static String BASE_URL_LOCAL = "http://192.168.43.122/trinetra/design.php";
 
     /* TODO : add base url */
     public static String BASE_URL_TEST = "https://trinetra.000webhostapp.com/test/design.php";
@@ -88,6 +90,8 @@ public class DataWrapper {
     public static String EMAIL_EXISTS = "-101";
     public static String AADHAR_EXISTS = "-102";
     public static String BOTH_EXISTS = "-103";
+    public static String NOT_EXIST = "-103";
+
 
 
 

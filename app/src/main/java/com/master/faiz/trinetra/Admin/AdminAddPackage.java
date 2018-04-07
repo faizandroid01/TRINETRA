@@ -1,6 +1,7 @@
 package com.master.faiz.trinetra.Admin;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.master.faiz.trinetra.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +32,7 @@ public class AdminAddPackage extends AppCompatActivity {
 
 
     Toolbar toolbar;
-    String admin_package_name;
+    String user_id, selected_project_name, selected_project_id;
     EditText packageName, packageStrtDate, packageEndDate, packageLocation;
     private ProgressDialog progressDialog;
     LinearLayout linearLayout;
@@ -52,10 +56,9 @@ public class AdminAddPackage extends AppCompatActivity {
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
-            admin_package_name = b.getString("admin_package_name");
-
-            // fetch the details from data base regarding "admin_project_name" and show it in fields available ....
-
+            user_id = b.getString("user_id");
+            selected_project_name = b.getString("selected_project_name");
+            selected_project_id = b.getString("selected_project_id");
 
         }
 
@@ -73,24 +76,42 @@ public class AdminAddPackage extends AppCompatActivity {
             progressDialog.show();
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, null, new Response.Listener<String>() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
 
-
                     progressDialog.dismiss();
 
-               /*     if(status==false)
-                    {
-                       Snackbar.make(linearLayout , "Failed !!" , Snackbar.LENGTH_SHORT);
 
-                    }else
-                        {
-                            Snackbar.make(linearLayout , "Details Added Successfully .. " , Snackbar.LENGTH_SHORT);
-                            startActivity(new Intent(AdminAddPackage.this, AdminPackages.class));
+                    Log.i("line no 81", response);
 
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+
+                        if (jsonObject.has("status")) {
+                            int status = Integer.parseInt(jsonObject.getString("status"));
+
+                            if (status == -1) {
+                                Snackbar.make(linearLayout, "Package Not Added .. Try Again", Snackbar.LENGTH_LONG).show();
+                            } else {
+                                Snackbar.make(linearLayout, "Package Added", Snackbar.LENGTH_LONG).show();
+                                Intent i = new Intent(AdminAddPackage.this, AdminPackages.class);
+                                i.putExtra("user_id", user_id);
+                                i.putExtra("selected_project_name", selected_project_name);
+                                i.putExtra("selected_project_id", selected_project_id);
+
+                                startActivity(i);
+                                finish();
+
+                            }
                         }
-*/
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
             }, new Response.ErrorListener() {
                 @Override

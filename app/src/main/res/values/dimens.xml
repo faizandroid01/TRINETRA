@@ -8,4 +8,5 @@
     <dimen name="acitivity_admin_view_package_textviews_margin_left">8dp</dimen>
     <dimen name="textview_margin_end">25dp</dimen>
     <dimen name="margin_right">20dp</dimen>
+    <dimen name="listview_margin">10dp</dimen>
 </resources>

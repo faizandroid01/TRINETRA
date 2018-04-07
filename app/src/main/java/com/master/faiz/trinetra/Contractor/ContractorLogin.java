@@ -4,34 +4,53 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.master.faiz.trinetra.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import HelperClass.ContractorProjectListViewItems;
+import Utils.DataWrapper;
 import Utils.VolleySingleton;
+import adapter.SwipeContractorProjectListAdapter;
 
-public class ContractorLogin extends AppCompatActivity {
+public class ContractorLogin extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     Toolbar toolbar;
-    ListView contractor_project_listView;
-    ArrayAdapter<String> adapter;
     String contractor_project_name;
-    ArrayList<String> cont_project_list;
+    ArrayList<String> cont_project_id_list;
     private ProgressDialog progressDialog;
+
+    String fetched_cont_project_name;
+    String fetched_cont_project_id;
+    String fetched_cont_project_location;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private ListView contractor_project_listView;
+    private SwipeContractorProjectListAdapter adapter;
+    private List<ContractorProjectListViewItems> contractorProjectList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,50 +61,27 @@ public class ContractorLogin extends AppCompatActivity {
         toolbar.setTitle(R.string.admin_projects);
         toolbar.setTitleTextColor(getResources().getColor(R.color.appbar_text_color));
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage(" Fetching project List ...");
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-
-        cont_project_list = new ArrayList<>();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, null, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                progressDialog.dismiss();
-                // parse the response and assign it to ArrayList package_list and then assign array list items to items []  ..
-                // @GET Method --  fetch the adminName and his projects corresponding to project id  .
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-
-                Log.i("Error: ", error.getMessage());
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                // hide the progress dialog
+        startProgressDialog();
+        cont_project_id_list = new ArrayList<>();
 
 
-            }
-        });
-        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
-
-       /* final String items[] = new String[cont_project_list.size()];
-
-        for (int i = 0; i < cont_project_list.size(); i++) {
-
-            items[i] = cont_project_list.get(i);
-
-        }*/
-
-
-
-
-        final String items[] = {"CP 1", "CP 2", "CP 3", "CP 4", "CP 5"};
         contractor_project_listView = (ListView) findViewById(R.id.contractor_projects_listview);
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, items);
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout_admin_project_panel);
+        contractorProjectList = new ArrayList<>();
+        adapter = new SwipeContractorProjectListAdapter(this, contractorProjectList);
+        contractor_project_listView.setAdapter(adapter);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+        swipeRefreshLayout.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        swipeRefreshLayout.setRefreshing(true);
+
+                                        fetch_data();
+                                    }
+                                }
+        );
+
         contractor_project_listView.setAdapter(adapter);
 
         contractor_project_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -93,9 +89,9 @@ public class ContractorLogin extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 
-                contractor_project_name = items[position];
+//                contractor_project_name = items[position];
                 Intent i = new Intent(ContractorLogin.this, ContractorViewPackage.class);
-                i.putExtra("contractor_project_name", contractor_project_name);
+                //i.putExtra("contractor_project_name", contractor_project_name);
                 startActivity(i);
 
                 contractor_project_listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -128,6 +124,84 @@ public class ContractorLogin extends AppCompatActivity {
 
     }
 
+    public void fetch_data() {
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+
+                // parse the response and assign it to ArrayList package_list and then assign array list items to items []  ..
+                // @GET Method --  fetch the adminName and his projects corresponding to project id  .
+
+
+                Log.i("reponse came", response);
+                progressDialog.dismiss();
+
+
+                try {
+                    JSONObject xx = new JSONObject(response);
+                    if (xx.has("status")) {
+                        Toast.makeText(ContractorLogin.this, "No current Projects available", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        JSONObject projects_details = new JSONObject(response);
+
+                        JSONArray cont_project_ids_array = projects_details.names();
+                        for (int i = 0; i < cont_project_ids_array.length(); i++) {
+
+                            JSONObject project_details = projects_details.getJSONObject(cont_project_ids_array.get(i).toString());
+                            Log.i("project_details", project_details.toString());
+                            fetched_cont_project_name = (String) project_details.get("project_name");
+                            Log.e("project_name", (String) project_details.get("project_name"));
+                            fetched_cont_project_id = cont_project_ids_array.get(i).toString();
+                            cont_project_id_list.add(fetched_cont_project_id);
+                            fetched_cont_project_location = project_details.getString("project_location");
+                            //after modification
+
+                            ContractorProjectListViewItems c_project = new ContractorProjectListViewItems(fetched_cont_project_name, fetched_cont_project_location);
+                            contractorProjectList.add(0, c_project);
+
+                        }
+
+                        adapter.notifyDataSetChanged();
+                    }
+                } catch (JSONException e) {
+                    Log.e("lne no 173", "JSON EXCEPTION");
+                }
+
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+
+                Log.i("Error: ", error.getMessage());
+                swipeRefreshLayout.setRefreshing(false);
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<String, String>();
+                //   params.put("user_added_id", bundle_project_id);
+
+                params.put("module", "project");
+                params.put("query_type", DataWrapper.QTYPE_O);
+                params.put("query", "read_projects");
+
+
+                return params;
+            }
+        };
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
+
+    }
+
     public void contractorAddWorker(View view) {
         //adds the worker in his own database
 
@@ -135,9 +209,24 @@ public class ContractorLogin extends AppCompatActivity {
 
     }
 
+
+    public void startProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage(" Fetching project List ...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+
+    }
+
     public void contractorViewWorker(View view) {
         // view whole worker list from his database
 
+
+    }
+
+    @Override
+    public void onRefresh() {
 
     }
 }

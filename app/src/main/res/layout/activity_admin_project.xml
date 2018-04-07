@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_admin_project_linear_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/activity_admin_project_linear_layout"
     tools:context="com.master.faiz.trinetra.Admin.AdminProject">
 
     <include layout="@layout/app_bar" />
@@ -27,35 +27,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/margin_right"
             android:layout_toEndOf="@+id/welcome"
             android:layout_toRightOf="@+id/welcome"
-            android:layout_marginEnd="@dimen/margin_right"
             android:hint="Admin Name"
             android:padding="5dp"
             android:textColor="@color/initial_name_color"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-
-        <ListView android:layout_height="match_parent"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout_admin_project_panel"
             android:layout_width="match_parent"
-            android:id="@+id/admin_project_listview"
             android:layout_below="@+id/welcome"
-            android:background="@color/listview_background"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
+
+            android:layout_margin="@dimen/listview_margin"
+            android:layout_height="wrap_content">
+
+            <ListView
+                android:id="@+id/admin_project_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/listview_background" />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
         <android.support.design.widget.FloatingActionButton
+            android:id="@+id/activity_admin_project_add_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_input_add"
-            android:id="@+id/activity_admin_project_add_button"
-            android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
             android:layout_margin="20dp"
-            android:onClick="adminAddProject" />
+            android:onClick="adminAddProject"
+            android:src="@android:drawable/ic_input_add" />
 
     </RelativeLayout>
 

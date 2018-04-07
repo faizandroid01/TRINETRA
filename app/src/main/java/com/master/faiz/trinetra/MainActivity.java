@@ -66,70 +66,76 @@ public class MainActivity extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, DataWrapper.BASE_URL_TEST, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-
-
                     progressDialog.dismiss();
 
-                    JSONObject res;
-                    try {
-                        res = new JSONObject(response);
-                        // Log.e("response", response);
-                        if (res.has("status")) {
-                            String status = (String) res.get("status");
-                            Snackbar.make(linearLayout, "Invalid Email or Password !", Snackbar.LENGTH_SHORT).show();
-                        } else {
-                            JSONObject xx = res.getJSONObject(userName.getText().toString().trim());// new JSONObject(userName.getText().toString().trim());
+                    if (response != null) {
+                        Log.e("response", response);
 
-                            String user_id = (String) xx.get("user_id");
-                            //     Log.i("line no 128", user_id);
-                            String user_passsword = (String) xx.get("password");
-                            String user_aadhar = (String) xx.get("aadhar_id");
-                            String user_name = (String) xx.get("name");
-                            String user_type = (String) xx.get("user_type");
+                        JSONObject res;
+                        try {
+                            res = new JSONObject(response);
+                            if (res.has("status")) {
+                                Snackbar.make(linearLayout, "Invalid Email or Password !", Snackbar.LENGTH_SHORT).show();
+
+                            } else {
+                                JSONObject xx = res.getJSONObject(userName.getText().toString().trim());// new JSONObject(userName.getText().toString().trim());
+
+                                String user_id = (String) xx.get("user_id");
+                                //     Log.i("line no 128", user_id);
+                                String user_passsword = (String) xx.get("password");
+                                String user_aadhar = (String) xx.get("aadhar_id");
+                                String user_name = (String) xx.get("name");
+                                String user_type = (String) xx.get("user_type");
 
 
-                            if (user_type.equals(DataWrapper.AC_ADMIN)) {
+                                if (user_type.equals(DataWrapper.AC_ADMIN)) {
 
-                                //    Log.i("line no 126", "AC_admin compared");
-                                activity_transfer = new Intent(MainActivity.this, AdminProject.class);
-                                activity_transfer.putExtra("user_id", user_id);
-                                activity_transfer.putExtra("user_name", user_name);
-                                activity_transfer.putExtra("user_aadhar", user_aadhar);
-                                activity_transfer.putExtra("user_type", user_type);
+                                    //    Log.i("line no 126", "AC_admin compared");
+                                    activity_transfer = new Intent(MainActivity.this, AdminProject.class);
+                                    activity_transfer.putExtra("user_id", user_id);
+                                    activity_transfer.putExtra("user_name", user_name);
+                                    activity_transfer.putExtra("user_aadhar", user_aadhar);
+                                    activity_transfer.putExtra("user_type", user_type);
+                                }
+                                if (user_type.equals(DataWrapper.AC_CONTRACTOR)) {
+                                    activity_transfer = new Intent(MainActivity.this, ContractorLogin.class);
+                                }
+                                if (user_type.equals(DataWrapper.AC_SUPERVISOR)) {
+                                    activity_transfer = new Intent(MainActivity.this, SupervisorLogin.class);
+                                }
+
+
+                                startActivity(activity_transfer);
+//                            Toast.makeText(MainActivity.this, "Login Successful..", Toast.LENGTH_SHORT).show();
+                                Snackbar.make(linearLayout, "Login Successful !!", Snackbar.LENGTH_LONG).show();
+
                             }
-                            if (user_type.equals(DataWrapper.AC_CONTRACTOR)) {
-                                activity_transfer = new Intent(MainActivity.this, ContractorLogin.class);
-                            }
-                            if (user_type.equals(DataWrapper.AC_SUPERVISOR)) {
-                                activity_transfer = new Intent(MainActivity.this, SupervisorLogin.class);
-                            }
-
-
-                            startActivity(activity_transfer);
-                            Toast.makeText(MainActivity.this, "Login Successful..", Toast.LENGTH_SHORT).show();
-                            Snackbar.make(linearLayout, "Login Successful !!", Snackbar.LENGTH_LONG);
-
+                        } catch (JSONException e) {
+                            Log.e("line 96", "JSON ");
                         }
-                    } catch (JSONException e) {
-                        Log.e("line 96", "JSON EX");
+
+                        //    Log.i("", response);
+
+                    } else {
+                        Toast.makeText(MainActivity.this, "Internet Error !!", Toast.LENGTH_SHORT).show();
                     }
-
-                    //    Log.i("", response);
-
-
                 }
-            }, new Response.ErrorListener() {
+            }, new Response.ErrorListener()
+
+            {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.dismiss();
 
-                    Log.i("Error: ", error.getMessage());
-                    Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.i("Error: 126 ", "some trash volley error");
+                    //   Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
                     // hide the progress dialog
 
 
                 }
-            }) {
+            })
+
+            {
 
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
@@ -147,7 +153,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-            VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+            VolleySingleton.getInstance(this).
+
+                    addToRequestQueue(stringRequest);
 
         } else {
             Snackbar.make(linearLayout, "Email can't be left blank !", Snackbar.LENGTH_SHORT).show();
@@ -166,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(this, ContractorLogin.class));
 
         }
-    }
+        }
 
     public void userRegister(View v) {
         Toast.makeText(this, "Sign Up Fun", Toast.LENGTH_SHORT).show();

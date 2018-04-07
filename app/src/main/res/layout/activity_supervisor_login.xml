@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -34,16 +33,23 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-
-        <ListView android:layout_height="match_parent"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout_supervisor_project_panel"
             android:layout_width="match_parent"
-            android:id="@+id/supervisor_project_listview"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/welcome"
-            android:background="@color/listview_background"
-            android:layout_marginTop="20dp"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/listview_margin">
 
-            />
+            <ListView
+                android:id="@+id/supervisor_project_listview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/listview_background"
+
+                />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 

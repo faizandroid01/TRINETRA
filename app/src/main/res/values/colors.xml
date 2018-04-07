@@ -16,4 +16,12 @@
     <color name="color_button">#789</color>
     <color name="appbar_text_color">#fff</color>
 
+    <string-array name="listview_bg">
+        <item>#6a6f70</item>
+        <item>#b5b6b5</item>
+
+    </string-array>
+
 </resources>
+
+

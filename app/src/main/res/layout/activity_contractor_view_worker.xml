@@ -22,15 +22,23 @@
             android:textStyle="bold"
             android:textSize="20sp"/>
 
-        <ListView
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout_contractor_view_worker_panel"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/textview1"
+
+            android:layout_margin="@dimen/listview_margin"
+            android:layout_height="wrap_content">
+
+            <ListView
             android:id="@+id/contractor_worker_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/textview1"
             android:layout_margin="10dp"
             android:background="@color/listview_background"
 
             />
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>
 
